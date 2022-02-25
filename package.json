@@ -7,9 +7,11 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "node app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.2",
     "express": "^4.17.3"
   },
   "devDependencies": {
