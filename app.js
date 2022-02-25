@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const coursesRouter = require('./routes/CoursesRouter.route');
+const studentsRouter = require('./routes/studentsRouter.route');
 const app = express();
 
 //Parse to Json
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/courses', coursesRouter);
+app.use('/api/students', studentsRouter);
 
 // Start the server on port 3000
 app.listen(3000, '127.0.0.1',() => {

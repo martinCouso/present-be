@@ -26,7 +26,8 @@ const courses = [
             {day: 'Martes', time: '9-10'},
             {day: 'Viernes', time: '9-10'},
         ]
-    },{_id:3,
+    },
+    {_id:3,
         year: '3',
         section: 'b',
         shift : 'ma;ana',
