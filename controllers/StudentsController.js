@@ -3,32 +3,31 @@
  * Author: Martin Couso, martin.couso@gmail.com
  */
  const students = [
-     {
-    _id: 1,
-    fistName: 'fistName1',
-    lastName: 'lastName1',
-    age : 15,
-    observations: 'Normal 55',
-    onlineUser: 'classroom.com/userTest23',
-    email:'test@test.com'
+     {_id: 1,
+        fistName: 'fistName1',
+        lastName: 'lastName1',
+        age : 15,
+        observations: 'Normal 55',
+        onlineUser: 'classroom.com/userTest23',
+        email:'test@test.com'
     },
     {
     _id: 2,
-    fistName: 'fistName1',
-    lastName: 'lastName1',
-    age : 15,
-    observations: 'Normal 55',
-    onlineUser: 'classroom.com/userTest23',
-    email:'test@test.com'
-        },
+        fistName: 'fistName1',
+        lastName: 'lastName1',
+        age : 15,
+        observations: 'Normal 55',
+        onlineUser: 'classroom.com/userTest23',
+        email:'test@test.com'
+    },
     {
     _id: 3,
-    fistName: 'fistName1',
-    lastName: 'lastName1',
-    age : 15,
-    observations: 'Normal 55',
-    onlineUser: 'classroom.com/userTest23',
-    email:'test@test.com'
+        fistName: 'fistName1',
+        lastName: 'lastName1',
+        age : 15,
+        observations: 'Normal 55',
+        onlineUser: 'classroom.com/userTest23',
+        email:'test@test.com'
     }
 ]
 

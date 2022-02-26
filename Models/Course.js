@@ -1,16 +1,15 @@
-//
+import mongoose from "mongoose"
+const {Schema} = mongoose
 
-
-const CourseModel = {
-    _id: 1,
-    year: '1',
-    section: 'a',
-    shift : 'tarde',
-    school: 'Normal 55',
-    subject: 'Biologia',
+const CourseSchema = new Schema({    
+    year: Number,
+    section: String,
+    shift : String,
+    school: String,
+    subject: String,
     schedule:[
-        {day: 'Lunes', time: '9-10'},
-        {day: 'Martes', time: '9-10'},
-        {day: 'Viernes', time: '9-10'},
+        {day: String, time: String},
+        {day: String, time: String},
+        {day: String, time: String},
     ]
-}
+})
