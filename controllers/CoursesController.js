@@ -2,54 +2,36 @@
  * Courses Controller
  * Author: Martin Couso, martin.couso@gmail.com
  */
-const courses = [
-    {_id:1,
-        year: '1',
-        section: 'a',
-        shift : 'tarde',
-        school: 'Normal 55',
-        subject: 'Biologia',
-        schedule:[
-            {day: 'Lunes', time: '9-10'},
-            {day: 'Martes', time: '9-10'},
-            {day: 'Viernes', time: '9-10'},
-        ]
-    },
-    {_id:2,
-        year: '2',
-        section: 'a',
-        shift : 'tarde',
-        school: 'Normal 55',
-        subject: 'Biologia',
-        schedule:[
-            {day: 'Lunes', time: '9-10'},
-            {day: 'Martes', time: '9-10'},
-            {day: 'Viernes', time: '9-10'},
-        ]
-    },
-    {_id:3,
-        year: '3',
-        section: 'b',
-        shift : 'ma;ana',
-        school: 'Normal 1',
-        subject: 'Matematica',
-        schedule:[
-            {day: 'Miercoles', time: '13-15'},
-            {day: 'Jueves', time: '8-10'},
-        ]
-    }
-]
+
+
+const CourseModel = require('../Models/Course');
 
 async function list(request,response,next) {
+    let allCourses = [];
+    if(request.params.teacherId){
+        allCourses = await CourseModel.find({teacherId:request.params.teacherId});
+    }else{
+        allCourses = await CourseModel.find({});
+    }
     try{
-        response.json(courses)
+        response.json(allCourses)
     }catch (e){
         console.log('e.message',e.message);
     }
 }
 async function create(request,response,next) {
+    console.log('request.body',request.body);
     try{
-        request.json({message:'create called'})
+        const newCourse = new CourseModel(request.body);
+        newCourse.save((error)=>{
+            console.log('newCourse error',error);
+            if(error){
+                response.status(500);
+                response.json({error:'Error al salvar el curso'})
+            } else{
+                response.json({course:newCourse})
+            }
+        })
     }catch (e){
         console.log('e.message',e.message);
     }
