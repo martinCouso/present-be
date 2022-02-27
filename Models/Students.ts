@@ -1,7 +1,18 @@
 import mongoose from "mongoose"
 const {Schema} = mongoose
 
-const StudentSchema = new Schema({
+export interface Student {
+    fistName: string,
+    lastName: string,
+    age : number,
+    observations: string,
+    onlineUser: string,
+    email: string,
+    courses: string[],
+    teacher:string
+}
+
+const StudentSchema = new Schema<Student>({
     fistName: String,
     lastName: String,
     age : Number,
@@ -14,4 +25,4 @@ const StudentSchema = new Schema({
 
 const Student = mongoose.model('Student', StudentSchema);
 
-module.exports = Student;
+export default Student;
