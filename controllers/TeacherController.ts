@@ -33,7 +33,6 @@ async function singIn(request: Request,response: Response) {
         const {username, password}= body;
         const newTeacher = new TeacherModel(request.body);
         newTeacher.save((error)=>{
-            console.log('newTeacher error',error);
             if(error){
                 response.status(500);
                 response.json({error:'Error al salvar el docente'})

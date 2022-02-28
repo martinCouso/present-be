@@ -39,7 +39,6 @@ async function show(request : Request<{studentId: string}>,response:Response) {
         } else {
             response.status(404)
             response.json({error : "estudiante no encontrado"})
-            console.log("continuo despues del response")
         }
 
     }catch (e){
