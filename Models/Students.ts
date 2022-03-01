@@ -2,14 +2,14 @@ import mongoose from "mongoose"
 const {Schema} = mongoose
 
 export interface Student {
-    fistName: string,
-    lastName: string,
-    age : number,
-    observations: string,
-    onlineUser: string,
-    email: string,
-    courses: string[],
-    teacher:string
+    fistName: string;
+    lastName: string;
+    age : number;
+    observations: string;
+    onlineUser: string;
+    email: string;
+    courses: string[];
+    teacher:string;
 }
 
 const StudentSchema = new Schema<Student>({
