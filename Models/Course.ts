@@ -1,6 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 
-interface CourseInterface {
+export interface CourseInterface {
     year: number;
         section: string;
         shift : string;
