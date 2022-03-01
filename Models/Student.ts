@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 const {Schema} = mongoose
 
-export interface Student {
+export interface StudentInterface {
     fistName: string;
     lastName: string;
     age : number;
@@ -12,7 +12,7 @@ export interface Student {
     teacher:string;
 }
 
-const StudentSchema = new Schema<Student>({
+export const StudentSchema = new Schema<StudentInterface>({
     fistName: String,
     lastName: String,
     age : Number,
