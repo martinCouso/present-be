@@ -34,7 +34,7 @@ app.use('/api/v1/attendance-lists', checkAuth0Jwt, AttendanceListRouter);
 
 // Start the server on port 3000
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
-app.listen(port, 'localhost',() => {
-    console.log(`app listening at http://localhost:3000`);
+app.listen(port,() => {
+    console.log(`app listening at ${port}`);
 });
 
