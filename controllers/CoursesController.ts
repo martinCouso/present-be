@@ -5,6 +5,7 @@
 import CourseModel, {CourseInterface} from '../Models/Course'
 import { Request, Response} from "express";
 import {getUserFromToken} from "../helpers/authHelper";
+import {validationResult} from "express-validator";
 
 async function list(request: Request,response: Response) {
     let allCourses = [];
@@ -24,6 +25,10 @@ async function list(request: Request,response: Response) {
     }
 }
 async function create(request: Request,response: Response) {
+    const errors = validationResult(request);
+    if(!errors.isEmpty()){
+        return response.status(400).json(errors);
+    }
     try{
         const newCoursePayload : CourseInterface = request.body;
         const userId =  await getUserFromToken(request.headers.authorization);
