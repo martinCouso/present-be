@@ -4,7 +4,9 @@ import bodyParser from "body-parser";
 import {auth} from 'express-oauth2-jwt-bearer';
 import CoursesRouter from './routes/CoursesRouter.route'
 import StudentsRouter from './routes/StudentsRouter.route'
-import  TeacherRouter  from './routes/TeacherRouter.route';
+import TeacherRouter  from './routes/TeacherRouter.route';
+import AttendanceListRouter  from './routes/AttendanceListRouter.router';
+
 import {connectToDb} from './config/db'
 
 const app = express();
@@ -28,6 +30,7 @@ app.get('/', (req : Request, res :Response) => {
 app.use('/api/v1/courses', checkAuth0Jwt, CoursesRouter);
 app.use('/api/v1/students', checkAuth0Jwt,  StudentsRouter);
 app.use('/api/v1/teachers', checkAuth0Jwt, TeacherRouter);
+app.use('/api/v1/attendance-lists', checkAuth0Jwt, AttendanceListRouter);
 
 // Start the server on port 3000
 app.listen(3000, '127.0.0.1',() => {

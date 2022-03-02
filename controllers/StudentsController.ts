@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import StudentModel, { Student } from '../Models/Students'
+import StudentModel, { StudentInterface } from '../Models/Student'
 import {getUserFromToken} from "../helpers/authHelper";
 
 interface RequestListParams {
@@ -29,7 +29,7 @@ async function list(request : Request<RequestListParams>,response:Response) {
     }
 }
 
-async function create(request : Request<{ courseId:string },null,Student>,response:Response) {
+async function create(request : Request<{ courseId:string },null,StudentInterface>,response:Response) {
     try{
         const userId =  await getUserFromToken(request.headers.authorization);
         const courseId = request.params.courseId;
