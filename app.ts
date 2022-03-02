@@ -33,7 +33,8 @@ app.use('/api/v1/teachers', checkAuth0Jwt, TeacherRouter);
 app.use('/api/v1/attendance-lists', checkAuth0Jwt, AttendanceListRouter);
 
 // Start the server on port 3000
-app.listen(3000, '127.0.0.1',() => {
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+app.listen(port, 'localhost',() => {
     console.log(`app listening at http://localhost:3000`);
 });
 
