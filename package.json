@@ -8,7 +8,8 @@
   "private": false,
   "scripts": {
     "dev": "ts-node-dev app.ts",
-    "start": "ts-node app.js",
+    "start": "ts-node app.ts",
+    "build": "tsc",
     "tsc": "tsc"
   },
   "dependencies": {

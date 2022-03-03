@@ -27,13 +27,15 @@ app.get('/', (req : Request, res :Response) => {
     res.json({'message': 'ok'});
 })
 
+// Resources Endpoints
 app.use('/api/v1/courses', checkAuth0Jwt, CoursesRouter);
 app.use('/api/v1/students', checkAuth0Jwt,  StudentsRouter);
 app.use('/api/v1/teachers', checkAuth0Jwt, TeacherRouter);
 app.use('/api/v1/attendance-lists', checkAuth0Jwt, AttendanceListRouter);
 
 // Start the server on port 3000
-app.listen(3000, '127.0.0.1',() => {
-    console.log(`app listening at http://localhost:3000`);
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+app.listen(port,() => {
+    console.log(`app listening at ${port}`);
 });
 
