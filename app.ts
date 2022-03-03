@@ -27,6 +27,7 @@ app.get('/', (req : Request, res :Response) => {
     res.json({'message': 'ok'});
 })
 
+// Resources Endpoints
 app.use('/api/v1/courses', checkAuth0Jwt, CoursesRouter);
 app.use('/api/v1/students', checkAuth0Jwt,  StudentsRouter);
 app.use('/api/v1/teachers', checkAuth0Jwt, TeacherRouter);

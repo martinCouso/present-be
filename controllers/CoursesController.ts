@@ -17,13 +17,15 @@ async function list(request: Request,response: Response) {
         }else{
             response.status(401).json({error:'Necesitas iniciar sesión primero'})
         }
-
     }catch (e ){
         if( e instanceof Error){
-            console.log('e.message', e.message);
+            console.error('[ERROR]GET: api/vi/courses', e.message);
+            response.status(500).json({errors:[{msg:e.message}]})
         }
+        response.status(500).send()
     }
 }
+
 async function create(request: Request,response: Response) {
     const errors = validationResult(request);
     if(!errors.isEmpty()){
@@ -38,7 +40,7 @@ async function create(request: Request,response: Response) {
             newCourse.save((error)=>{
                 if(error){
                     response.status(500);
-                    response.json({error:'Error al crear el curso'});
+                    response.json({errors:[{msg: 'Error al crear el curso'}]});
                 } else{
                     response.status(201).json({course:newCourse});
                 }
@@ -46,34 +48,36 @@ async function create(request: Request,response: Response) {
         }
     }catch (e){
         if( e instanceof Error){
-            console.log('e.message', e.message);
+            console.error('[ERROR]POST: api/vi/courses', e.message);
+            response.status(500).json({errors:[{msg:e.message}]})
         }
+        response.status(500).send()
     }
 }
 
 async function update(request: Request,response: Response) {
-
+    const errors = validationResult(request);
+    if(!errors.isEmpty()){
+        return response.status(400).json(errors);
+    }
     const courseId : string = request.params.courseId;
     const newValues = request.body;
     const userId =  await getUserFromToken(request.headers.authorization);
-    if(!newValues){
-        response.status(400).json({error:'Faltan los campos a actualizarse'})
-    }
-    if(!courseId){
-        response.status(400).json({error:'El identificador del curso no está presente'})
-    }
     const filter = {_id: courseId, teacherId: userId}
     try{
         if(userId){
              const updatedCourse = await CourseModel.findOneAndUpdate(filter, newValues, {new:true})
+            console.log('updatedCourse',updatedCourse);
              response.status(201).json(updatedCourse);
         }else{
-            response.status(401).json({error:'Necesitas iniciar sesión primero'})
+            response.status(401).json({errors:[{msg:'Necesitas iniciar sesión primero'}]})
         }
     }catch (e){
         if( e instanceof Error){
-            console.log('e.message', e.message);
+            console.error('[ERROR]PATCH: api/v1/courses', e.message);
+            response.status(500).json({errors:[{msg:e.message}]})
         }
+        response.status(500).send()
     }
 }
 
