@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import StudentModel, { StudentInterface } from '../Models/Student'
 import {getUserFromToken} from "../helpers/authHelper";
+import {validationResult} from "express-validator";
 
 interface RequestListParams {
     courseId?: string;
@@ -29,10 +30,14 @@ async function list(request : Request<RequestListParams>,response:Response) {
     }
 }
 
-async function create(request : Request<{ courseId:string },null,StudentInterface>,response:Response) {
+async function create(request : Request,response:Response) {
+    const errors = validationResult(request);
+    if(!errors.isEmpty()){
+        return response.status(400).json(errors);
+    }
     try{
         const userId =  await getUserFromToken(request.headers.authorization);
-        const courseId = request.params.courseId;
+        const courseId = request.body.courseId;
        if(userId){
            const newStudent = new StudentModel(request.body);
            newStudent.teacher = userId;

@@ -1,5 +1,7 @@
 import {Router} from "express";
 import StudentsController  from '../controllers/StudentsController';
+import {checkSchema} from "express-validator";
+import {StudentsValidationScheme} from "../validation-schemas/StudentsValidationScheme";
 
 
 
@@ -8,7 +10,9 @@ const StudentsRouter= Router();
 
 StudentsRouter.get('/:courseId?',StudentsController.list)
 StudentsRouter.get('/:userId',StudentsController.show)
-StudentsRouter.post('/:courseId',StudentsController.create)
+StudentsRouter.post('/',checkSchema(StudentsValidationScheme), StudentsController.create)
+
+
 StudentsRouter.delete('/',StudentsController.remove)
 
 
