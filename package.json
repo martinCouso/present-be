@@ -11,7 +11,7 @@
     "start": "ts-node app.ts",
     "build": "tsc",
     "tsc": "tsc",
-    "test": "ENV_FILE=.env.test jest"
+    "test": "jest"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",

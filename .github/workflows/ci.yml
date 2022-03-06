@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Copy Env vars
-        run: echo ${{ secrets.TEST_ENV }} | base64 --decode > .env
+        env:
+          TEST_ENV: ${{ secrets.TEST_ENV }}
+        run: echo $TEST_ENV | base64 --decode > .env
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
