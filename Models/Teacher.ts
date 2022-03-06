@@ -1,14 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface TeacherInterface {
+export interface UserInterface {
     firstName: string,
     lastName: string,
     email: string,
     password : string,
-    courses: string[],
+    courses?: string[],
 }
 
-const TeacherSchema = new Schema<TeacherInterface>({
+const UserSchema = new Schema<UserInterface>({
     firstName: String,
     lastName: String,
     email: String,
@@ -16,6 +16,6 @@ const TeacherSchema = new Schema<TeacherInterface>({
     courses: [Schema.Types.ObjectId],
 })
 
-const Teacher = mongoose.model('Teacher', TeacherSchema);
+const User = mongoose.model('User', UserSchema);
 
-export default Teacher;
+export default User;
