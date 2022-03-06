@@ -19,7 +19,7 @@ async function list(request: Request,response: Response) {
         }
     }catch (e ){
         if( e instanceof Error){
-            console.error('[ERROR]GET: api/vi/courses', e.message);
+            console.error('[ERROR]GET: api/v1/courses', e.message);
             response.status(500).json({errors:[{msg:e.message}]})
         }
         response.status(500).send()
