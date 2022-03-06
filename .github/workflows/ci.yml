@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    environment: DEV
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,9 +16,8 @@ jobs:
         env:
           ENV_TEST: ${{ secrets.ENV_TEST }}
         run: |
-          echo $ENV_TEST | base64 --decode
+          echo $ENV_TEST
           echo $ENV_TEST | base64 --decode > .env
-          echo cat .env
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
