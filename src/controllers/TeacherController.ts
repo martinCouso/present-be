@@ -2,7 +2,7 @@
  * Courses Controller
  * Author: Martin Couso, martin.couso@gmail.com
  */
-import TeacherModel from "../../Models/Teacher";
+import TeacherModel from "../Models/Teacher";
 import { Request, Response } from "express";
 
 async function create(request: Request, response: Response) {

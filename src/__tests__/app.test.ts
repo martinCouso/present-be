@@ -1,16 +1,5 @@
-import mongoose from "mongoose";
 import { createServer } from "../config/server";
 import supertest from "supertest";
-
-beforeEach((done) => {
-  mongoose.connect(process.env.DB_URI || "default", () => done());
-});
-
-/*afterEach((done) => {
-  mongoose.connection.db.dropDatabase(() => {
-    mongoose.connection.close(() => done());
-  });
-});*/
 
 const app = createServer();
 

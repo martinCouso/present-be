@@ -2,7 +2,7 @@
  * Courses Controller
  * Author: Martin Couso, martin.couso@gmail.com
  */
-import CourseModel, { CourseInterface } from "../../Models/Course";
+import CourseModel, { CourseInterface } from "../Models/Course";
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../../Models/Teacher";
+import UserModel from "../Models/Teacher";
 import bcrypt from "bcrypt";
 import "dotenv/config";
 import axios from "axios";
