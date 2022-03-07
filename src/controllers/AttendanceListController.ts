@@ -1,7 +1,7 @@
 import {
   AttendanceListModel,
   AttendanceEntryModel,
-} from "../../Models/AttendanceList";
+} from "../Models/AttendanceList";
 import { Request, Response } from "express";
 import { getUserFromToken } from "../helpers/authHelper";
 

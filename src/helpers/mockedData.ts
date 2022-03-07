@@ -1,4 +1,4 @@
-import { CourseInterface } from "../../Models/Course";
+import { CourseInterface } from "../Models/Course";
 
 export const coursesList: CourseInterface[] = [
   {

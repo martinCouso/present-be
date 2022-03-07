@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { createServer } from "../config/server";
 import supertest from "supertest";
-import CourseModel, { CourseInterface } from "../../Models/Course";
+import CourseModel, { CourseInterface } from "../Models/Course";
 import "dotenv/config";
 import { coursesList } from "../helpers/mockedData";
 import { getTestUser, getTestUserToken } from "../helpers/authHelper";

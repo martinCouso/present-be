@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import StudentModel, { StudentInterface } from "../../Models/Student";
+import StudentModel, { StudentInterface } from "../Models/Student";
 import { getUserFromToken } from "../helpers/authHelper";
 
 interface RequestListParams {
