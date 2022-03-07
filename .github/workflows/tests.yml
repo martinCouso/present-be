@@ -7,13 +7,13 @@ on:
     branches: [ development ]
 
 jobs:
-  build:
-    environment: DEV
+  test:
+    environment: DEV #reference to the GitHub Repository Environment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Copy Env vars
-        env:
+        env: #reference to the job environment
           ENV_TEST: ${{ secrets.ENV_TEST }}
         run: |
           echo $ENV_TEST | base64 --decode > .env
@@ -23,6 +23,6 @@ jobs:
           node-version: '16.13.0'
           cache: 'npm'
       - name: Install dependencies
-        run: yarn
-      - name: Tests
+        run: yarn install
+      - name: Run Tests
         run: yarn test
